@@ -7,10 +7,10 @@ return [
     | Broadcasting
     |--------------------------------------------------------------------------
     |
-    | By uncommenting the Laravel Echo configuration, you may connect Filament
-    | to any Pusher-compatible websockets server.
+    | Jika diperlukan, Anda dapat menghubungkan Filament ke server websocket
+    | seperti Pusher atau server lain yang kompatibel untuk notifikasi real-time.
     |
-    | This will allow your users to receive real-time notifications.
+    | Aktifkan konfigurasi Laravel Echo di bawah ini dengan menghapus komentar.
     |
     */
 
@@ -28,7 +28,6 @@ return [
         //     'encrypted' => true,
         //     'forceTLS' => true,
         // ],
-
     ],
 
     /*
@@ -36,8 +35,8 @@ return [
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
     |
-    | This is the storage disk Filament will use to store files. You may use
-    | any of the disks defined in the `config/filesystems.php`.
+    | Disk penyimpanan default untuk file yang digunakan Filament.
+    | Gunakan nama disk yang tersedia di file `config/filesystems.php`.
     |
     */
 
@@ -48,10 +47,10 @@ return [
     | Assets Path
     |--------------------------------------------------------------------------
     |
-    | This is the directory where Filament's assets will be published to. It
-    | is relative to the `public` directory of your Laravel application.
+    | Direktori tempat aset Filament dipublikasikan.
+    | Jalur ini relatif terhadap direktori `public`.
     |
-    | After changing the path, you should run `php artisan filament:assets`.
+    | Jalankan perintah `php artisan filament:assets` setelah perubahan.
     |
     */
 
@@ -62,10 +61,10 @@ return [
     | Cache Path
     |--------------------------------------------------------------------------
     |
-    | This is the directory that Filament will use to store cache files that
-    | are used to optimize the registration of components.
+    | Direktori penyimpanan file cache Filament yang digunakan untuk
+    | mengoptimalkan registrasi komponen.
     |
-    | After changing the path, you should run `php artisan filament:cache-components`.
+    | Jalankan `php artisan filament:cache-components` setelah perubahan.
     |
     */
 
@@ -76,11 +75,9 @@ return [
     | Livewire Loading Delay
     |--------------------------------------------------------------------------
     |
-    | This sets the delay before loading indicators appear.
+    | Menentukan jeda sebelum indikator loading muncul.
     |
-    | Setting this to 'none' makes indicators appear immediately, which can be
-    | desirable for high-latency connections. Setting it to 'default' applies
-    | Livewire's standard 200ms delay.
+    | Opsi: 'none' = muncul langsung, 'default' = jeda 200ms (standar Livewire).
     |
     */
 
@@ -91,11 +88,24 @@ return [
     | System Route Prefix
     |--------------------------------------------------------------------------
     |
-    | This is the prefix used for the system routes that Filament registers,
-    | such as the routes for downloading exports and failed import rows.
+    | Prefix rute untuk sistem internal Filament (seperti ekspor dan impor).
     |
     */
 
     'system_route_prefix' => 'filament',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Panel Providers
+    |--------------------------------------------------------------------------
+    |
+    | Daftar class panel Filament yang digunakan oleh aplikasi.
+    |
+    */
+
+    'panel-providers' => [
+        App\Providers\Filament\AdminPanelProvider::class,
+        App\Providers\Filament\OrangTuaPanelProvider::class,
+    ],
 
 ];
